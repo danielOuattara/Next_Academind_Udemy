@@ -12,7 +12,7 @@ function MainNavigation() {
             <Link to="/">AllMeetUp</Link>{" "}
           </li>
           <li>
-            <Link to="new-meetup">NewMettUp</Link>
+            <Link to="new-meetup">NewMeetUp</Link>
           </li>
           <li>
             <Link to="favorite">Favorite</Link>

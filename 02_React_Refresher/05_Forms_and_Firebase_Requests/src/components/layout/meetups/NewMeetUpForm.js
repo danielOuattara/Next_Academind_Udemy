@@ -3,23 +3,18 @@ import Card from "../../UI/Card";
 import styles from "./NewMeetUpForm.module.css";
 
 function NewMeetUpForm(props) {
-  const titleInpuRef = useRef();
-  const imageInpuRef = useRef();
-  const addressInpuRef = useRef();
+  const titleInputRef = useRef();
+  const imageInputRef = useRef();
+  const addressInputRef = useRef();
   const descriptionInputRef = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const enteredTitle = titleInpuRef.current.value;
-    const enteredImage = imageInpuRef.current.value;
-    const enteredAddress = addressInpuRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-
     const meetUpData = {
-      title: enteredTitle,
-      image: enteredImage,
-      address: enteredAddress,
-      description: enteredDescription,
+      title: titleInputRef.current.value,
+      image: imageInputRef.current.value,
+      address: addressInputRef.current.value,
+      description: descriptionInputRef.current.value,
     };
 
     // console.log(meetUpData);
@@ -36,7 +31,7 @@ function NewMeetUpForm(props) {
             required
             id="title"
             name="title"
-            ref={titleInpuRef}
+            ref={titleInputRef}
           />
         </div>
 
@@ -47,7 +42,7 @@ function NewMeetUpForm(props) {
             required
             id="image"
             name="image"
-            ref={imageInpuRef}
+            ref={imageInputRef}
           />
         </div>
 
@@ -58,7 +53,7 @@ function NewMeetUpForm(props) {
             required
             id="address"
             name="address"
-            ref={addressInpuRef}
+            ref={addressInputRef}
           />
         </div>
 

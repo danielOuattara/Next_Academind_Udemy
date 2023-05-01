@@ -15,12 +15,9 @@ export default function NewMeetUpPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(meetupData),
       });
-      // console.log("response = ", response);
       if (!response.ok) {
         throw new Error(`${response.statusText} ${response.status} `);
       }
-      const data = await response.json();
-      // console.log("data = ", data);
       navigate("/", { replace: true });
     } catch (error) {
       console.log("error.message = ", error.message);
