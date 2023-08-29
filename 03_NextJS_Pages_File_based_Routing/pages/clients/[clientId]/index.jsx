@@ -1,4 +1,3 @@
-import React from "react";
 import { useRouter } from "next/router";
 
 export default function ClientProjectsPage() {
@@ -8,10 +7,12 @@ export default function ClientProjectsPage() {
   function loadProjectHandler() {
     // fetch & load data ...
     // router.push("/clients/daniel/project-a");
+
     /* OR */
+
     router.push({
-      pathname: "/clients/[clientId]/[clientprojectId]",
-      query: { clientId: "daniel", clientprojectId: "project-a" },
+      pathname: "/clients/[clientId]/[clientProjectId]",
+      query: { clientId: router.query.clientId, clientProjectId: "project-a" },
     });
   }
 

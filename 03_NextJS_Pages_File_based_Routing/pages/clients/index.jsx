@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 
 export default function ClientPage() {
@@ -6,6 +5,7 @@ export default function ClientPage() {
     { id: "john-doe", name: "John " },
     { id: "danny-boy", name: "Daniel" },
   ];
+
   return (
     <div>
       <h1>Clients Root Page</h1>
@@ -18,7 +18,7 @@ export default function ClientPage() {
         </li>
       </ul>
 
-      {/*  OR  */}
+      {/*  OR ---------------------------- */}
 
       <ul>
         {clientsList.map((client) => (
@@ -28,7 +28,7 @@ export default function ClientPage() {
         ))}
       </ul>
 
-      {/*  OR  */}
+      {/*  OR ----------------------------- */}
 
       <ul>
         {clientsList.map((client) => (

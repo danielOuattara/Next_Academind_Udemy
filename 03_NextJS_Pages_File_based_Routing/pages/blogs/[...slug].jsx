@@ -1,6 +1,8 @@
+// Collect all routes
+
 import { useRouter } from "next/router";
 
-export default function BlogPostsPage() {
+export default function BlogsPostPage() {
   const router = useRouter();
   console.log("router blog = ", router);
   return (
