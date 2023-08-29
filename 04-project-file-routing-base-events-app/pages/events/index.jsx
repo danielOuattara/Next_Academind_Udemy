@@ -1,7 +1,11 @@
+import EventsList from "@/components/events/EventsList";
+import { getAllEvents } from "@/utilities/utilities";
+
 export default function EventsRootPage() {
+  const allEvents = getAllEvents();
   return (
     <div>
-      <h1>Root Events Page</h1>
+      <EventsList items={allEvents} />
     </div>
   );
 }

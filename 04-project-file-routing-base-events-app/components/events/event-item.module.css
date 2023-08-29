@@ -82,8 +82,8 @@
   }
 
   .item img {
-    width: 40%;
-    height: 14rem;
+    max-width: 10rem;
+    height: 100%;
   }
 
   .content {

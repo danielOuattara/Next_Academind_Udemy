@@ -8,7 +8,7 @@ export default function EventDetailPage() {
   const router = useRouter();
 
   const event = getEventById(router.query.eventId);
-  console.log("event = ", event);
+
   if (!event) {
     return <p>No Event found</p>;
   }

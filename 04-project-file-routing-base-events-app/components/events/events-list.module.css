@@ -1,5 +1,15 @@
 .list {
   width: 90%;
-  max-width: 40rem;
   margin: 5rem auto;
+
+}
+
+@media (min-width: 768px) {
+  .list {
+    margin: 5rem auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+  }
 }
