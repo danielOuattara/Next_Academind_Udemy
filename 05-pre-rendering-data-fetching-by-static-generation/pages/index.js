@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import * as fs from "node:fs/promises";
+import path from "path";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(props) {
-  console.log(props);
   return (
     <ul>
       {props.products.map((product) => (
@@ -16,9 +17,13 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), "data", "mock-data.json");
+  const jsonData = await fs.readFile(filePath);
+  const data = JSON.parse(jsonData);
+
   return {
     props: {
-      products: [{ id: "p1", title: "Product 1" }],
+      products: data.products,
     },
   };
 }
