@@ -16,7 +16,11 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
+  /* 
+  This code will be executed on "npm run build", 
+  not on client side  
+  */
   const filePath = path.join(process.cwd(), "data", "mock-data.json");
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
