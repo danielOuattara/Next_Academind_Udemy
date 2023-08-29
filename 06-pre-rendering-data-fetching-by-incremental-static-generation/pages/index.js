@@ -24,6 +24,19 @@ export async function getStaticProps(context) {
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
 
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/no-data",
+      },
+    };
+  }
+
+  // const data = { products: [] }; // for testing
+  if (data.products.length === 0) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       products: data.products,
