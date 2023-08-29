@@ -1,5 +1,5 @@
 import Link from "next/link";
-import * as styles from "./../../styles/button.module.css";
+import * as styles from "./button.module.css";
 
 export default function ButtonLink(props) {
   return (

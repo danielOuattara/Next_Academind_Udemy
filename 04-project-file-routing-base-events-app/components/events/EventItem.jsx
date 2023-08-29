@@ -1,10 +1,16 @@
-import * as styles from "./../../styles/event-item.module.css";
+import * as styles from "./event-item.module.css";
 import ButtonLink from "../ui/ButtonLink";
-import DateIcon from "../icons/date-icon";
-import AddressIcon from "../icons/address-icon";
-import ArrowRightIcon from "../icons/arrow-right-icon";
+import DateIcon from "../icons/DateIcon";
+import AddressIcon from "../icons/AddressIcon";
+import ArrowRightIcon from "../icons/ArrowRightIcon";
 
 export default function EventItem(props) {
+  const humanReadableDate = new Date(props.date).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <li className={styles.item}>
       <img src={"/" + props.image} alt={props.title} />
@@ -13,13 +19,7 @@ export default function EventItem(props) {
           <h2>{props.title}</h2>
           <div className={styles.date}>
             <DateIcon />
-            <time>
-              {new Date(props.date).toLocaleDateString("en-US", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </time>
+            <time>{humanReadableDate}</time>
           </div>
           <div className={styles.address}>
             <AddressIcon />

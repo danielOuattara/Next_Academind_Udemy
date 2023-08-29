@@ -1,5 +1,5 @@
 import EventItem from "./EventItem";
-import * as styles from "./../../styles/events-list.module.css";
+import * as styles from "./events-list.module.css";
 export default function EventsList(props) {
   return (
     <ul className={styles.list}>
