@@ -1,3 +1,7 @@
-export default function index() {
-  return <div>Root Events Page</div>;
+export default function EventsRootPage() {
+  return (
+    <div>
+      <h1>Root Events Page</h1>
+    </div>
+  );
 }
