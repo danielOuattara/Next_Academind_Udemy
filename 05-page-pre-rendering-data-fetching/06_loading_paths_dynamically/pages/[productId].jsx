@@ -2,6 +2,8 @@ import React from "react";
 import * as fs from "node:fs/promises";
 import path from "path";
 
+//---------------------------------------------
+
 export default function ProductDetailPage(props) {
   console.log("props in ProductDetailsPage = ", props);
 
@@ -13,21 +15,22 @@ export default function ProductDetailPage(props) {
   );
 }
 
+//---------------------------------------------
+
 // NEW !
 async function getProductsData() {
   const filePath = path.join(process.cwd(), "data", "mock-data.json");
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
-  console.log("data getData = ", data);
   return data;
 }
 
+//---------------------------------------------
+
 export async function getStaticProps(context) {
-  console.log("context in ProductDetailsPage = ", context);
   const productId = context.params.productId;
   const data = await getProductsData(); // NEW !
   const product = data.products.find((product) => product.id === productId);
-
   return {
     props: {
       product,
@@ -35,17 +38,16 @@ export async function getStaticProps(context) {
   };
 }
 
+//---------------------------------------------
+
 export async function getStaticPaths() {
   // NEW !
   const data = await getProductsData();
-
   // NEW !
   const paths = data.products.map((item) => ({
     params: { productId: item.id },
   }));
-
-  console.log("paths getStaticPaths =", paths);
-
+  // console.log("paths getStaticPaths =", paths);
   return {
     paths,
     fallback: false,

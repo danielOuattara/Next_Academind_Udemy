@@ -11,8 +11,10 @@ export default function Home(props) {
   );
 }
 
+//
 export async function getStaticProps(context) {
   /* 
+  On page component only !
   This code will be executed on "npm run build", 
   not on client side  
   */

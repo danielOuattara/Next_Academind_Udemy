@@ -6,7 +6,8 @@ export default function ProductDetailPage(props) {
   console.log("props in ProductDetailsPage = ", props);
 
   // if (!props.product) {
-  //   // NEW , use if fallback = true
+  //   // NEW , use if fallback = true. Only ! Not necessary if fallback = "blocking"
+  //   // Visible if direct access by address bar: --> /product/p1
   //   return <p>Loading...</p>;
   // }
 
@@ -37,9 +38,12 @@ export async function getStaticProps(context) {
 
 // export async function getStaticPaths() {
 //   return {
-//     paths: [{ params: { productId: "p1" } }],
-//     paths: [{ params: { productId: "p2" } }],
-//     paths: [{ params: { productId: "p3" } }],
+//     paths: [
+//       { params: { productId: "p1" } },
+//       { params: { productId: "p2" } },
+//       { params: { productId: "p3" } },
+//     ],
+
 //     fallback: false,
 //   };
 // }
@@ -48,9 +52,11 @@ export async function getStaticProps(context) {
 
 // export async function getStaticPaths() {
 //   return {
-//     paths: [{ params: { productId: "p1" } }],
-//     // paths: [{ params: { productId: "p2" } }],
-//     // paths: [{ params: { productId: "p3" } }],
+//     paths: [
+//       { params: { productId: "p1" } },
+//       // { params: { productId: "p2" } }, // generated Just in Time
+//       // { params: { productId: "p3" } }, // generated Just in Time
+//     ],
 //     fallback: true, // NEW
 //   };
 // }
@@ -59,9 +65,11 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { productId: "p1" } }],
-    // paths: [{ params: { productId: "p2" } }],
-    // paths: [{ params: { productId: "p3" } }],
+    paths: [
+      { params: { productId: "p1" } },
+      // { params: { productId: "p2" } },
+      // { params: { productId: "p1" } },
+    ],
     fallback: "blocking", // NEW
   };
 }

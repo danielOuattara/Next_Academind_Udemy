@@ -6,7 +6,6 @@ import path from "path";
 
 export default function ProductDetailPage(props) {
   console.log("props in ProductDetailsPage = ", props);
-
   // NEW , use if fallback = true,
   // but not useful here if product don't exits, like p4
   if (!props.product) {
@@ -27,7 +26,6 @@ async function getProductsData() {
   const filePath = path.join(process.cwd(), "data", "mock-data.json");
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
-  console.log("data getData = ", data);
   return data;
 }
 
@@ -56,12 +54,9 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const data = await getProductsData();
-
   const paths = data.products.map((item) => ({
     params: { productId: item.id },
   }));
-
-  console.log("paths getStaticPaths =", paths);
 
   return {
     paths,
