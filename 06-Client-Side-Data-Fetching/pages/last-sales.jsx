@@ -4,10 +4,10 @@ const url = `https://acadmind-nextjs-client-fetch-default-rtdb.europe-west1.fire
 
 export default function LastSales() {
   const [sales, setSales] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
+    setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -21,12 +21,12 @@ export default function LastSales() {
           });
         }
         setSales(transformedSales);
-        setIsLoading(false);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  if (isLoading) {
+  if (loading) {
     return <h1>Loading...</h1>;
   }
 
