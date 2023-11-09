@@ -1,5 +1,6 @@
 export const url = `https://acadmind-nextjs-client-fetch-default-rtdb.europe-west1.firebasedatabase.app/events.json`;
 
+//---------------------------------------
 export async function getAllEvents() {
   const response = await fetch(url);
   const events = await response.json();
@@ -14,17 +15,20 @@ export async function getAllEvents() {
   return allEvents;
 }
 
+//---------------------------------------
 export async function getFeaturedEvents() {
   const allEvents = await getAllEvents();
   const featuredEvents = allEvents.filter((event) => event.isFeatured === true);
   return featuredEvents;
 }
 
+//---------------------------------------
 export async function getEventById(id) {
   const allEvents = await getAllEvents();
   return allEvents.find((event) => event.id === id);
 }
 
+//---------------------------------------
 export async function getAllEventsStaticPaths() {
   const allEvents = await getAllEvents();
   return allEvents.map((event) => ({
@@ -32,12 +36,12 @@ export async function getAllEventsStaticPaths() {
   }));
 }
 
-//-----------------------------------------------------------------
-
-export function getFilteredEvents(dateFilter) {
+//---------------------------------------
+export async function getFilteredEvents(dateFilter) {
   const { year, month } = dateFilter;
+  const allEvents = await getAllEvents();
 
-  let filteredEvents = DUMMY_EVENTS.filter((event) => {
+  const filteredEvents = allEvents.filter((event) => {
     const eventDate = new Date(event.date);
     return (
       eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
