@@ -20,6 +20,20 @@ export async function getFeaturedEvents() {
   return featuredEvents;
 }
 
+export async function getEventById(id) {
+  const allEvents = await getAllEvents();
+  return allEvents.find((event) => event.id === id);
+}
+
+export async function getAllEventsStaticPaths() {
+  const allEvents = await getAllEvents();
+  return allEvents.map((event) => ({
+    params: { eventId: `${event.id}` },
+  }));
+}
+
+//-----------------------------------------------------------------
+
 export function getFilteredEvents(dateFilter) {
   const { year, month } = dateFilter;
 
@@ -31,8 +45,4 @@ export function getFilteredEvents(dateFilter) {
   });
 
   return filteredEvents;
-}
-
-export function getEventById(id) {
-  return DUMMY_EVENTS.find((event) => event.id === id);
 }

@@ -1,15 +1,12 @@
 import EventContent from "@/components/event-detail/EventContent";
 import EventLogistics from "@/components/event-detail/EventLogistics";
 import EventSummary from "@/components/event-detail/EventSummary";
-import { getEventById } from "@/utilities/utilities";
-import { useRouter } from "next/router";
-import { url } from "@/utilities/utilities";
+import {
+  getEventById,
+  getAllEventsStaticPaths,
+} from "@/utilities/firebase-utility";
 
-export default function EventDetailPage() {
-  const router = useRouter();
-
-  const event = getEventById(router.query.eventId);
-
+export default function EventDetailPage({ event }) {
   if (!event) {
     return <p>No Event found</p>;
   }
@@ -28,34 +25,20 @@ export default function EventDetailPage() {
   );
 }
 
-export async function getStaticProps() {
-  const response = await fetch(url);
-  // console.log("response = ", response);
-  const events = await response.json();
+export async function getStaticProps(context) {
+  const event = await getEventById(context.params.eventId);
 
-  // console.log("events  = ", events);
-
-  const featuredEvents = [];
-  for (const key in events) {
-    // console.log(events[key]);
-    if (events[key].isFeatured) {
-      featuredEvents.push({
-        id: key,
-        title: events[key].title,
-        description: events[key].description,
-        location: events[key].location,
-        date: events[key].date,
-        image: events[key].image,
-        isFeatured: events[key].isFeatured,
-      });
-    }
-  }
-
-  // console.log("featuredEvents = ", featuredEvents);
-
+  const paths = await getAllEventsStaticPaths();
   return {
     props: {
-      featuredEvents,
+      event,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: await getAllEventsStaticPaths(),
+    fallback: true,
   };
 }
