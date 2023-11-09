@@ -7,6 +7,13 @@ import {
 } from "@/utilities/firebase-utility";
 
 export default function EventDetailPage(props) {
+  if (!props.event) {
+    return (
+      <div className="center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <>
       <EventSummary title={props.event.title} />
@@ -30,11 +37,11 @@ export async function getStaticProps(context) {
     };
   }
 
-  const paths = await getAllEventsStaticPaths();
   return {
     props: {
       event,
     },
+    revalidate: 300,
   };
 }
 

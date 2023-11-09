@@ -31,10 +31,6 @@ export async function getAllEventsStaticPaths() {
     params: { eventId: `${event.id}` },
   }));
 }
-// export async function getAllEventsStaticPaths() {
-//   const allEvents = await getAllEvents();
-//   return allEvents.map((event) => event.id);
-// }
 
 //-----------------------------------------------------------------
 
