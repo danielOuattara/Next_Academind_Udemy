@@ -3,6 +3,7 @@ import ButtonLink from "../ui/ButtonLink";
 import DateIcon from "../icons/DateIcon";
 import AddressIcon from "../icons/AddressIcon";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
+import Image from "next/image";
 
 export default function EventItem(props) {
   const humanReadableDate = new Date(props.date).toLocaleDateString("en-US", {
@@ -13,7 +14,13 @@ export default function EventItem(props) {
 
   return (
     <li className={styles.item}>
-      <img src={"/" + props.image} alt={props.title} />
+      <Image
+        src={"/" + props.image}
+        alt={props.title}
+        width={450}
+        height={340}
+        quality={100}
+      />
       <div className={styles.content}>
         <div className={styles.summary}>
           <h2>{props.title}</h2>
