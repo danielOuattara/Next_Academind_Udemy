@@ -4,17 +4,35 @@ import { getFilteredEvents } from "@/utilities/firebase-utility";
 import Head from "next/head";
 
 export default function FilteredEventsPage(props) {
+  const date = new Date(props.year, props.month - 1);
+
+  const PageHead = (
+    <Head>
+      <title> Filtered events</title>
+      <meta
+        name="description"
+        content={`All events for ${date.toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })} event around your place`}
+      />
+    </Head>
+  );
+
   if (props.hasError) {
     return (
-      <p className="center">Invalid filters. Please adjust filter items</p>
+      <>
+        {PageHead}
+        <p className="center">Invalid filters. Please adjust filter items</p>
+      </>
     );
   }
-
-  const date = new Date(props.year, props.month - 1);
 
   if (props.filteredEvents.length === 0) {
     return (
       <>
+        {PageHead}
         <EventFilteringResultsTitle date={date} />
         <p className="center">No single event found for those filtering</p>;
       </>
@@ -23,13 +41,7 @@ export default function FilteredEventsPage(props) {
 
   return (
     <div>
-      <Head>
-        <title> Filtered events</title>
-        <meta
-          name="description"
-          content={`All events for ${date} event around your place`}
-        />
-      </Head>
+      {PageHead}
       <EventFilteringResultsTitle date={date} />
 
       <EventsList items={props.filteredEvents} />
