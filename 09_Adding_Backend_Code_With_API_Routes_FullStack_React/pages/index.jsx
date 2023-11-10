@@ -20,6 +20,9 @@ export default function HomePage() {
 
     const dataResponse = await response.json();
     console.log(dataResponse);
+
+    emailInput.current.value = "";
+    feedbackInput.current.value = "";
   };
 
   return (

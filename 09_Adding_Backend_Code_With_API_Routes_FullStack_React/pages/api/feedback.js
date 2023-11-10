@@ -5,7 +5,6 @@ import * as fs from "node:fs";
 import path from "path";
 
 export default function handler(req, res) {
-  // console.log(req.method);
   if (req.method === "POST") {
     const newFeedback = {
       id: new Date(),
