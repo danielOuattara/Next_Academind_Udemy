@@ -5,14 +5,12 @@ import * as fs from "node:fs";
 import path from "path";
 
 export default function handler(req, res) {
-  if (req.method === "post") {
-    const email = req.body.email;
-    const feedback = req.body.feedback;
-
+  // console.log(req.method);
+  if (req.method === "POST") {
     const newFeedback = {
       id: new Date(),
-      email,
-      feedback,
+      email: req.body.email,
+      feedback: req.body.feedback,
     };
 
     const filePath = path.join(process.cwd(), "dataStorage", "feedback.json");

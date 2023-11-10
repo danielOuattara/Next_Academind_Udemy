@@ -4,22 +4,22 @@ export default function HomePage() {
   const emailInput = useRef();
   const feedbackInput = useRef();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     const email = emailInput.current.value;
     const feedback = feedbackInput.current.value;
 
-    // do not forget validation !
+    // do not forget input validation !
+    const response = await fetch("/api/feedback", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ email, feedback }),
+    });
 
-    console.log(email, feedback);
-
-    // fetch("/api/feedback", {
-    //   headers: {
-    //     "content-type": "application-type/json",
-    //   },
-    //   method: "POST",
-    //   body: JSON.stringify({ emailData, feedbackData }),
-    // });
+    const dataResponse = await response.json();
+    console.log(dataResponse);
   };
 
   return (
