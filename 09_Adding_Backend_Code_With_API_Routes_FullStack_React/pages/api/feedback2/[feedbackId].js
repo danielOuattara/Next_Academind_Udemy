@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import path from "path";
 
 /* 
-/api/some-value
+/api/feedback2/some-id
 */
 export default function handler(req, res) {
   const filePath = path.join(process.cwd(), "dataStorage", "feedback.json");
