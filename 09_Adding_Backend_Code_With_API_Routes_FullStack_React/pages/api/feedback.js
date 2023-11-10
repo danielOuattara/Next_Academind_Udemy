@@ -16,6 +16,7 @@ export default function handler(req, res) {
       email: req.body.email,
       feedback: req.body.feedback,
     };
+    // console.log("data = ", data);
     data.push(newFeedback);
     fs.writeFileSync(filePath, JSON.stringify(data));
 

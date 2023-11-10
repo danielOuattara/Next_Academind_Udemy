@@ -1,14 +1,29 @@
 import * as fs from "node:fs";
 import path from "path";
+import { useState } from "react";
 
 export default function AllFeedbacks(props) {
+  const [singleFeedbackData, setSingleFeedbackData] = useState({});
+
+  const getSingleFeedbackDetails = async (id) => {
+    const response = await fetch(`/api/${id}`);
+    const data = await response.json();
+    setSingleFeedbackData(data.singleFeedback);
+  };
   return (
     <div>
+      {singleFeedbackData && <p>message : {singleFeedbackData.feedback}</p>}
       <ul>
         {props.feedbackData.map((item) => (
-          <li key={item.id}>
+          <li key={item.id} style={listItemStyle}>
             <h2>{item.email}</h2>
-            <p>{item.feedback}</p>
+            {/* <p>{item.feedback}</p> */}
+            <button
+              style={btnStyle}
+              onClick={() => getSingleFeedbackDetails(item.id)}
+            >
+              show details
+            </button>
           </li>
         ))}
       </ul>
@@ -33,3 +48,23 @@ export async function getStaticProps() {
     },
   };
 }
+
+const btnStyle = {
+  backgroundColor: "#04AA6D" /* Green */,
+  borderRadius: "6px",
+  border: "none",
+  color: "#fff",
+  padding: "15px 32px",
+  textAlign: "center",
+  textDecoration: "none",
+  display: "inline-block",
+  fontSize: "16px",
+  cursor: "pointer",
+};
+
+const listItemStyle = {
+  border: "1px solid gray",
+  margin: "10px",
+  padding: "10px",
+  borderRadius: "6px",
+};

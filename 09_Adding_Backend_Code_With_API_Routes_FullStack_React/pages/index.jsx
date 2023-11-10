@@ -6,6 +6,8 @@ export default function HomePage() {
 
   const [feedbackData, setFetchedFeedback] = useState([]);
 
+  // console.log("feedbackData = ", feedbackData);
+
   //------
   const fetchFeedback = async () => {
     const response = await fetch("/api/feedback");
