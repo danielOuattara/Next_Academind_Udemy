@@ -16,7 +16,6 @@ export default function handler(req, res) {
       email: req.body.email,
       feedback: req.body.feedback,
     };
-    // console.log("data = ", data);
     data.push(newFeedback);
     fs.writeFileSync(filePath, JSON.stringify(data));
 
@@ -25,7 +24,6 @@ export default function handler(req, res) {
       .json({ name: "feedback received successfully !", message: newFeedback });
   }
   if (req.method === "GET") {
-    // console.log("data = ", data);
     return res.status(200).json({ data });
   }
 }
