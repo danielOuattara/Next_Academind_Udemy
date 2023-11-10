@@ -1,6 +1,15 @@
 export const url = `https://acadmind-nextjs-client-fetch-default-rtdb.europe-west1.firebasedatabase.app/events.json`;
 
 //---------------------------------------
+export const fetchAllEvents = async (url) => {
+  console.log("----------- In fetchAllEvents -------------");
+  const response = await fetch(url);
+  console.log("response = ", response);
+  const events = await response.json();
+  return events;
+};
+
+//---------------------------------------
 export async function getAllEvents() {
   const response = await fetch(url);
   const events = await response.json();
