@@ -6,8 +6,20 @@ export default function HomePage() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const emailValue = emailInput.current.value;
-    const feedbackValue = feedbackInput.current.value;
+    const email = emailInput.current.value;
+    const feedback = feedbackInput.current.value;
+
+    // do not forget validation !
+
+    console.log(email, feedback);
+
+    // fetch("/api/feedback", {
+    //   headers: {
+    //     "content-type": "application-type/json",
+    //   },
+    //   method: "POST",
+    //   body: JSON.stringify({ emailData, feedbackData }),
+    // });
   };
 
   return (
