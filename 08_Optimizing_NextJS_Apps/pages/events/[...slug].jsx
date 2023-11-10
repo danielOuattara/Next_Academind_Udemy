@@ -1,6 +1,7 @@
 import EventFilteringResultsTitle from "@/components/events/EventFilteringResultsTitle";
 import EventsList from "@/components/events/EventsList";
 import { getFilteredEvents } from "@/utilities/firebase-utility";
+import Head from "next/head";
 
 export default function FilteredEventsPage(props) {
   if (props.hasError) {
@@ -22,6 +23,13 @@ export default function FilteredEventsPage(props) {
 
   return (
     <div>
+      <Head>
+        <title> Filtered events</title>
+        <meta
+          name="description"
+          content={`All events for ${date} event around your place`}
+        />
+      </Head>
       <EventFilteringResultsTitle date={date} />
 
       <EventsList items={props.filteredEvents} />

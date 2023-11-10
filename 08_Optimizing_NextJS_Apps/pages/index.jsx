@@ -7,10 +7,10 @@ export default function HomePage(props) {
   return (
     <>
       <Head>
-        <title> Next Events</title>
+        <title> Next Featured Events</title>
         <meta
           name="description"
-          content="Find a list of great events around your place"
+          content="Find a list of great events around your place.All featured events"
         />
       </Head>
       <EventsList items={props.featuredEvents} />

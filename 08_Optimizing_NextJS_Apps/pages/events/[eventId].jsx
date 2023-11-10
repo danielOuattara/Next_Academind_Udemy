@@ -5,6 +5,7 @@ import {
   getEventById,
   getAllEventsStaticPaths,
 } from "@/utilities/firebase-utility";
+import Head from "next/head";
 
 export default function EventDetailPage(props) {
   if (!props.event) {
@@ -16,6 +17,13 @@ export default function EventDetailPage(props) {
   }
   return (
     <>
+      <Head>
+        <title> {props.event.title}</title>
+        <meta
+          name="description"
+          content={`${props.event.title} event around your place`}
+        />
+      </Head>
       <EventSummary title={props.event.title} />
       <EventLogistics
         date={props.event.date}
