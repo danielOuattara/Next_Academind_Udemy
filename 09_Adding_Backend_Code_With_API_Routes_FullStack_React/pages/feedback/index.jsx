@@ -6,7 +6,7 @@ export default function AllFeedbacks(props) {
   const [singleFeedbackData, setSingleFeedbackData] = useState({});
 
   const getSingleFeedbackDetails = async (id) => {
-    const response = await fetch(`/api/${id}`);
+    const response = await fetch(`/api/feedback/${id}`);
     const data = await response.json();
     setSingleFeedbackData(data.singleFeedback);
   };
@@ -33,8 +33,8 @@ export default function AllFeedbacks(props) {
 
 export async function getStaticProps() {
   /* CAUTION: 
-  ==> no "fetch" call in getStaticProps for Next local fullStack API project
-  ---------------------------------------------------------------------------*/
+  ==> no "fetch" call in getStaticProps with Next for local fullStack API project
+  --------------------------------------------------------------------------------*/
   // const response = await fetch("/api/feedback");
   // const feedbackData = await response.json();
 

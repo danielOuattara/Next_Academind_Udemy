@@ -12,7 +12,7 @@ export default function handler(req, res) {
   if (req.method === "POST") {
     // do not forget data validation here also !
     const newFeedback = {
-      id: new Date(),
+      id: new Date().toISOString(),
       email: req.body.email,
       feedback: req.body.feedback,
     };

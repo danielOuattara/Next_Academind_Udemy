@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 export default function HomePage() {
   const emailInput = useRef();
   const feedbackInput = useRef();
-
   const [feedbackData, setFetchedFeedback] = useState([]);
 
   // console.log("feedbackData = ", feedbackData);
@@ -12,12 +11,12 @@ export default function HomePage() {
   const fetchFeedback = async () => {
     const response = await fetch("/api/feedback");
     const data = await response.json();
-    console.log("data = ", data);
+    // console.log("data = ", data);
     setFetchedFeedback(data.data);
   };
 
   //------
-  const submitHandler = async (event) => {
+  const submitFormHandler = async (event) => {
     event.preventDefault();
     const email = emailInput.current.value;
     const feedback = feedbackInput.current.value;
@@ -25,16 +24,17 @@ export default function HomePage() {
     if (!email || !feedback) return;
 
     // do not forget input validation !
+
     const response = await fetch("/api/feedback", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST",
       body: JSON.stringify({ email, feedback }),
     });
 
     const dataResponse = await response.json();
-    console.log(dataResponse);
+    // console.log(dataResponse);
 
     emailInput.current.value = "";
     feedbackInput.current.value = "";
@@ -43,7 +43,7 @@ export default function HomePage() {
   return (
     <div>
       <h1>The Home Page</h1>
-      <form action="" method="get" onSubmit={submitHandler}>
+      <form action="" method="get" onSubmit={submitFormHandler}>
         <div>
           <label htmlFor="email">Your email Address :</label>
           <input type="email" id="email" name="email" ref={emailInput} />
@@ -61,6 +61,8 @@ export default function HomePage() {
 
         <button type="submit">Send feedback</button>
       </form>
+
+      <hr />
 
       <div>
         <button onClick={fetchFeedback}>Fetch feedback</button>

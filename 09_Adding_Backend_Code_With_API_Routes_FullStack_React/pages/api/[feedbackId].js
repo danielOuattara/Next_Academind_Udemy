@@ -9,6 +9,6 @@ export default function handler(req, res) {
   const fileData = fs.readFileSync(filePath);
   const data = JSON.parse(fileData);
   const singleFeedback = data.find((item) => item.id === req.query.feedbackId);
-  console.log("singleFeedback = ", singleFeedback);
+  // console.log("singleFeedback = ", singleFeedback);
   return res.status(200).json({ singleFeedback });
 }
