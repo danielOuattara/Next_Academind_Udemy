@@ -7,9 +7,7 @@ export default function EventsRootPage() {
   const allEvents = getAllEvents();
   const router = useRouter();
 
-  const searchEvent = (year, month) => {
-    router.push(`/events/${year}/${month}`);
-  };
+  const searchEvent = (year, month) => router.push(`/events/${year}/${month}`);
   return (
     <>
       <EventSearch searchEvent={searchEvent} />
