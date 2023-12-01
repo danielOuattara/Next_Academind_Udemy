@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "email": "daniel.ouattara@gmx.com",
+    "feedback": "lorem ipsum color dolor peta upsus"
+  },
+  {
+    "id": "2",
+    "email": "daniel.ouattara@gmx.com",
+    "feedback": "lorem ipsum color dolor peta upsus"
+  },
+
+  {
+    "id": "3",
+    "email": "ricatti.ricci@gmail.com",
+    "feedback": "message of Ricatti.ricci@gmail.com"
+  },
+  {
+    "id": "4",
+    "email": "ricci@gmail.com",
+    "feedback": "message"
+  }
+]
