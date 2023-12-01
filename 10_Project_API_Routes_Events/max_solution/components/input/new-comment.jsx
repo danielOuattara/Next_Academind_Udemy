@@ -41,6 +41,14 @@ export default function NewComment(props) {
     };
   }, [isInvalid]);
 
+  useEffect(() => {
+    if (props.success) {
+      emailInputRef.current.value = "";
+      nameInputRef.current.value = "";
+      commentInputRef.current.value = "";
+    }
+  }, [props.success]);
+
   return (
     <form className={classes.form} onSubmit={submitComment}>
       <div className={classes.row}>
