@@ -1,6 +1,10 @@
 import classes from "./comment-list.module.css";
 
 export default function CommentList(props) {
+  if (props.isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
   if (props.comments.length === 0) {
     return <h2>No comment for this event yet !</h2>;
   }

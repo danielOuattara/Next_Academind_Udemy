@@ -11,11 +11,13 @@ function Comments(props) {
   const [success, setSuccess] = useState(false);
 
   const fetchComments = async () => {
+    setIsLoading(true);
     setSuccess(false);
     const response = await fetch(`/api/comments/${props.eventId}`);
     const data = await response.json();
     setComments(() => data.comments);
     setSuccess(true);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -58,7 +60,9 @@ function Comments(props) {
       {showComments && (
         <NewComment addCommentHandler={addCommentHandler} success={success} />
       )}
-      {showComments && <CommentList comments={comments} />}
+      {showComments && (
+        <CommentList comments={comments} isLoading={isLoading} />
+      )}
     </section>
   );
 }
