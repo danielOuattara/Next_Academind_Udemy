@@ -1,13 +1,7 @@
-import { MongoClient } from "mongodb";
-
-async function connectToDatabase() {
-  return await MongoClient.connect(process.env.MONGO_URI);
-}
-
-async function insertToDocuments(client, data) {
-  const db = client.db();
-  await db.collection("emails").insertOne(data);
-}
+import {
+  connectToDatabase,
+  insertToDocuments,
+} from "@/utilities/database-utility";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -22,8 +16,8 @@ export default async function handler(req, res) {
 
     try {
       const client = await connectToDatabase();
-      await insertToDocuments(client, { email: req.body.email });
-      client.close();
+      await insertToDocuments(client, "emails", { email: req.body.email });
+      // client.close();
       return res.status(201).json({ message: "success !" });
     } catch (error) {
       console.log(`Mongo Error: ${error.message}`); // special case for some reason
