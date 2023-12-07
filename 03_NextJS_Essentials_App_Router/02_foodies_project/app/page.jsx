@@ -1,25 +1,14 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import ImageSlideshow from "@/components/images/image-slideshow";
 
 export default function Home() {
   return (
-    // <main>
-    //   <h1 style={{ color: "white", textAlign: "center" }}>
-    //     Time to get started!
-    //   </h1>
-    //   <p>
-    //     <Link href="/meals">Meals</Link>
-    //   </p>
-    //   <p>
-    //     <Link href="/meals/share">Shared Meals</Link>
-    //   </p>
-    //   <p>
-    //     <Link href="/community">Community</Link>
-    //   </p>
-    // </main>
     <>
       <header className={styles.header}>
-        <div className={styles.slideshow}></div>
+        <div className={styles.slideshow}>
+          <ImageSlideshow />
+        </div>
         <div className="">
           <div className={styles.hero}>
             <h1>Next Level Foodies</h1>
