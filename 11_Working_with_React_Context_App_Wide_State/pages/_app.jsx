@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
-import Notification from "@/components/ui/notification";
 import NotificationContextProvider from "@/store/NotificationContext";
 
 export default function App({ Component, pageProps }) {
@@ -16,7 +15,6 @@ export default function App({ Component, pageProps }) {
           />
         </Head>
         <Component {...pageProps} />
-        <Notification title="title" message="message" status="success" />
       </Layout>
     </NotificationContextProvider>
   );
