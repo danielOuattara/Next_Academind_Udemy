@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./new-comment.module.css";
+import { useNotificationContext } from "@/store/NotificationContext";
 
 export default function NewComment(props) {
+  const { showNotification } = useNotificationContext();
   const [isInvalid, setIsInvalid] = useState(false);
-
   const emailInputRef = useRef();
   const nameInputRef = useRef();
   const commentInputRef = useRef();
@@ -25,7 +26,12 @@ export default function NewComment(props) {
       !comment ||
       comment.trim() === ""
     ) {
-      return setIsInvalid(true);
+      setIsInvalid(true);
+      return showNotification({
+        title: "Error in commenting Event ...",
+        message: " Please enter a valid email address name and text!",
+        status: "error",
+      });
     }
 
     props.addCommentHandler({ email, name, comment });
@@ -67,7 +73,9 @@ export default function NewComment(props) {
       </div>
       <button>Submit</button>
       {isInvalid && (
-        <p style={errorStyle}>Please enter a valid email address and text!</p>
+        <p style={errorStyle}>
+          Please enter a valid email address name and text!
+        </p>
       )}
     </form>
   );

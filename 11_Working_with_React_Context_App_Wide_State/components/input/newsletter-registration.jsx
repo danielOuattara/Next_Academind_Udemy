@@ -1,8 +1,10 @@
 import classes from "./newsletter-registration.module.css";
 import { useRef, useState, useEffect } from "react";
+import { useNotificationContext } from "@/store/NotificationContext";
 
 export default function NewsletterRegistration() {
   const emailRef = useRef();
+  const { showNotification } = useNotificationContext();
   const [registrationEmail, setRegistrationEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -12,6 +14,12 @@ export default function NewsletterRegistration() {
     try {
       event.preventDefault();
       setIsLoading(true);
+
+      showNotification({
+        title: "Signing up ...",
+        message: "Registration for newsletter",
+        status: "pending",
+      });
 
       // get user input (state or refs)
       const email = emailRef.current.value;
@@ -36,6 +44,12 @@ export default function NewsletterRegistration() {
       }
 
       const data = await response.json();
+      showNotification({
+        title: "success..",
+        message: "successfully Registration for newsletter",
+        status: "success",
+      });
+
       setIsLoading(false);
       setSuccess(true);
       setRegistrationEmail(data.email);
@@ -45,6 +59,11 @@ export default function NewsletterRegistration() {
       setIsLoading(false);
       setSuccess(false);
       setError(err.message);
+      showNotification({
+        title: "Error in Signing up ...",
+        message: err.message,
+        status: "error",
+      });
     }
   };
 

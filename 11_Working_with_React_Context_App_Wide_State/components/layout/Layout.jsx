@@ -3,7 +3,7 @@ import MainHeader from "./MainHeader";
 import { useNotificationContext } from "@/store/NotificationContext";
 
 export default function Layout(props) {
-  const { notification, message, hideNotification, showNotification } =
+  const { notification, hideNotification, showNotification } =
     useNotificationContext();
   return (
     <>
