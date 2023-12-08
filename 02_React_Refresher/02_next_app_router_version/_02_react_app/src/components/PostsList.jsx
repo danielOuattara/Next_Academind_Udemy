@@ -5,15 +5,10 @@ import * as styles from "./PostsList.module.css";
 import Modal from "./Modal";
 
 export default function PostList(props) {
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
+  const [postsList, setPostsList] = useState([]);
 
-  const changeBodyHandler = (event) => {
-    setEnteredBody(event.target.value);
-  };
-
-  const changeAuthorHandler = (event) => {
-    setEnteredAuthor(event.target.value);
+  const addPostHandler = (objArg) => {
+    return setPostsList((prevState) => [...prevState, objArg]);
   };
 
   return (
@@ -21,14 +16,15 @@ export default function PostList(props) {
       {props.modalIsOpen && (
         <Modal toggleModalHandler={props.toggleModalHandler}>
           <NewPost
-            changeBodyHandler={changeBodyHandler}
-            changeAuthorHandler={changeAuthorHandler}
+            toggleModalHandler={props.toggleModalHandler}
+            addPostHandler={addPostHandler}
           />
         </Modal>
       )}
       <ul className={styles.posts}>
-        <Post author="Max" body="React.js" />
-        <Post author="John" body="Next.js" />
+        {postsList.map((post) => (
+          <Post key={post.id} {...post} />
+        ))}
       </ul>
     </>
   );
