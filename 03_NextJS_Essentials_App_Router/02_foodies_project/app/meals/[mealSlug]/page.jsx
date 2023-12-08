@@ -1,9 +1,14 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import { getSingleMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 export default async function SingleMealPage(props) {
   const singleMeal = await getSingleMeal(props.params.mealSlug);
+
+  if (!singleMeal) {
+    notFound();
+  }
 
   singleMeal.instructions = singleMeal.instructions.replace(/\n/g, "<br/>");
   return (
