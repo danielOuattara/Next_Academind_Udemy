@@ -7,9 +7,8 @@ import {
 
 export default async function handler(req, res) {
   const eventId = req.query.eventId;
-  console.log("eventId = ", eventId);
   const client = await MongoClient.connect(process.env.MONGO_URI);
-  const db = client.db();
+  // const db = client.db();
 
   if (req.method === "POST") {
     const { email, name, comment } = req.body;
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
     }
 
     try {
-      const client = await connectToDatabase();
+      // const client = await connectToDatabase();
       await insertToDocuments(client, "comments", {
         eventId,
         email,
@@ -39,6 +38,7 @@ export default async function handler(req, res) {
         message: "commented successfully !",
       });
     } catch (error) {
+      client.close();
       console.log(`Mongo Error: ${error.message}`); // special case for some reason
       return res.status(500).json({ message: `Mongo Error: ${error.message}` });
     }
@@ -50,6 +50,7 @@ export default async function handler(req, res) {
       });
       res.status(200).json({ comments: commentList });
     } catch (error) {
+      client.close();
       console.log(`Mongo Error: ${error.message}`); // special case for some reason
       return res.status(500).json({ message: `Mongo Error: ${error.message}` });
     }
