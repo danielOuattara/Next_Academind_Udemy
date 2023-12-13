@@ -18,13 +18,13 @@ export async function getSingleMeal(slug) {
 }
 
 export async function saveMeal(meal) {
-  meal.slug = slugify(`${meal.title}--${meal.creator}`, { lower: true });
+  meal.slug = slugify(`${meal.title}-${meal.creator}`, { lower: true });
   meal.instructions = xss(meal.instructions);
 
-  const image_extension = meal.image.type.split("/").pop();
+  const image_extension = meal.image.type.split("/")[1];
   const image_name = `${
     meal.slug
-  }-${new Date().getTime()}-image.${image_extension}`;
+  }-${new Date().getTime()}-img.${image_extension}`;
 
   const stream = fs.createWriteStream(`public/images/${image_name}`);
   const bufferedImage = await meal.image.arrayBuffer();
