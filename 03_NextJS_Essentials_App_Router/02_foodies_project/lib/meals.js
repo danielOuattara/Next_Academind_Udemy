@@ -18,7 +18,7 @@ export async function getSingleMeal(slug) {
 }
 
 export async function saveMeal(meal) {
-  meal.slug = slugify(meal.title, { lower: true });
+  meal.slug = slugify(`${meal.title}--${meal.creator}`, { lower: true });
   meal.instructions = xss(meal.instructions);
 
   const image_extension = meal.image.type.split("/").pop();
