@@ -6,6 +6,11 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import { revalidatePath } from "next/cache";
 
+export const metadata = {
+  title: "All Meals",
+  description: " Browse Delicious meals, shared by a food-loving community.",
+};
+
 async function Meals() {
   revalidatePath("/meals");
   const meals = await getMeals();
