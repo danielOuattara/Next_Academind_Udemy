@@ -1,8 +1,10 @@
 import { useState } from "react";
 import * as styles from "../routes/NewPost.module.css";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 export default function NewPost(props) {
+  const navigate = useNavigate();
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
   const changeBodyHandler = (event) => setEnteredBody(event.target.value);
@@ -15,6 +17,12 @@ export default function NewPost(props) {
       body: enteredBody,
     });
     return props.toggleModalHandler();
+  };
+
+  const cancelSubmit = () => {
+    setEnteredAuthor("");
+    setEnteredBody("");
+    navigate("/");
   };
 
   return (
@@ -34,7 +42,7 @@ export default function NewPost(props) {
           />
         </p>
         <p className={styles.actions}>
-          <button type="button" onClick={props.toggleModalHandler}>
+          <button type="button" onClick={cancelSubmit}>
             Cancel
           </button>
           <button type="submit">Submit</button>
