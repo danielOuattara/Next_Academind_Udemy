@@ -1,8 +1,20 @@
 import styles from "./page.module.css";
 import Image from "next/image";
-import { getSingleMeal } from "@/lib/meals";
+import { getMeals, getSingleMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const singleMeal = await getSingleMeal(params.mealSlug);
+  if (!singleMeal) {
+    notFound();
+  }
+  return {
+    title: singleMeal.title,
+    description: singleMeal.summary,
+  };
+}
+
+//-----
 export default async function SingleMealPage(props) {
   const singleMeal = await getSingleMeal(props.params.mealSlug);
 
