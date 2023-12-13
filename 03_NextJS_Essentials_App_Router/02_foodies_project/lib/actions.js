@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 // "use server" creates a "server action", a function guarantied to work ONLY on server
 
@@ -40,5 +41,6 @@ export async function shareMeal(prevState, formData) {
   }
 
   await saveMeal(meal);
+  revalidatePath("/meals");
   redirect("/meals");
 }

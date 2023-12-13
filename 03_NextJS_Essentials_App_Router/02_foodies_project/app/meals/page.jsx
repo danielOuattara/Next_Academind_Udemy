@@ -4,8 +4,10 @@ import Link from "next/link";
 import { getMeals } from "@/lib/meals";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { revalidatePath } from "next/cache";
 
 async function Meals() {
+  revalidatePath("/meals");
   const meals = await getMeals();
   return <MealsGrid meals={meals} />;
 }
