@@ -17,8 +17,8 @@ app.use((req, res, next) => {
 });
 
 app.get("/posts", async (req, res) => {
+  await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
   const storedPosts = await getStoredPosts();
-  // await new Promise((resolve, reject) => setTimeout(() => resolve(), 1500));
   res.json({ posts: storedPosts });
 });
 
@@ -29,6 +29,7 @@ app.get("/posts/:id", async (req, res) => {
 });
 
 app.post("/posts", async (req, res) => {
+    await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
   const existingPosts = await getStoredPosts();
   const newPost = {
     id: new Date().getTime(),
