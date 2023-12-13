@@ -11,7 +11,7 @@ function isInvalidText(text) {
   return false;
 }
 
-export async function shareMeal(formData) {
+export async function shareMeal(prevState, formData) {
   const meal = {
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -33,7 +33,10 @@ export async function shareMeal(formData) {
     !meal.image ||
     meal.image.size === 0
   ) {
-    throw new Error("Error in Creating new Meal: inputs are not valid");
+    // throw new Error("Error in Creating new Meal: inputs are not valid");
+    return {
+      message: "Invalid inputs",
+    };
   }
 
   await saveMeal(meal);
