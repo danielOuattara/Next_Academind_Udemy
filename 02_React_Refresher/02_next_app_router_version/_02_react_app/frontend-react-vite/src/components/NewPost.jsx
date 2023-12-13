@@ -3,17 +3,13 @@ import * as styles from "./NewPost.module.css";
 
 export default function NewPost(props) {
   const [enteredBody, setEnteredBody] = useState("");
-
   const [enteredAuthor, setEnteredAuthor] = useState("");
-
   const changeBodyHandler = (event) => setEnteredBody(event.target.value);
-
   const changeAuthorHandler = (event) => setEnteredAuthor(event.target.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
     props.addPostHandler({
-      id: new Date().getTime(),
       author: enteredAuthor,
       body: enteredBody,
     });

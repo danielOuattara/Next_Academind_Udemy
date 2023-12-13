@@ -7,8 +7,24 @@ import Modal from "./Modal";
 export default function PostList(props) {
   const [postsList, setPostsList] = useState([]);
 
-  const addPostHandler = (objArg) => {
-    return setPostsList((prevState) => [...prevState, objArg]);
+  const addPostHandler = async (objArg) => {
+    try {
+      const response = await fetch("http://localhost:8080/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objArg),
+      });
+
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+
+      return setPostsList((prevState) => [...prevState, objArg]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
