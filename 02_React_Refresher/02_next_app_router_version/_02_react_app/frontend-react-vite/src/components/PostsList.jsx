@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import NewPost from "./NewPost";
+// import NewPost from "./NewPost";
 import Post from "./Post";
-import * as styles from "./PostsList.module.css";
-import Modal from "./Modal";
+import styles from "./PostsList.module.css";
+// import Modal from "./Modal";
 
 const url = "http://localhost:8080/posts";
 
@@ -56,14 +56,14 @@ export default function PostList(props) {
 
   return (
     <>
-      {props.modalIsOpen && (
+      {/* {props.modalIsOpen && (
         <Modal toggleModalHandler={props.toggleModalHandler}>
           <NewPost
             toggleModalHandler={props.toggleModalHandler}
             addPostHandler={addPostHandler}
           />
         </Modal>
-      )}
+      )} */}
 
       {isGettingData && (
         <section style={{ textAlign: "center" }}>
