@@ -15,7 +15,7 @@ export default async function SingleMealPage(props) {
     <>
       <header className={styles.header}>
         <div className={styles.image}>
-          <Image fill src={singleMeal.image} />
+          <Image fill src={singleMeal.image} alt={singleMeal.title} />
         </div>
 
         <div className={styles.headerText}>
