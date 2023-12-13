@@ -23,9 +23,10 @@ export default function PostList(props) {
       )}
 
       {postsList.length === 0 && (
-        <h2 style={{ textAlign: "center" }}>
-          No post yet. Please add new post
-        </h2>
+        <section style={{ textAlign: "center" }}>
+          <h2>No post yet. Please add new post</h2>
+          <p>Start to add new posts now !</p>
+        </section>
       )}
 
       {postsList.length !== 0 && (
