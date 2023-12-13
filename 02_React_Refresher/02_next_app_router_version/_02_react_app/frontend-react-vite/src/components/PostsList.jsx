@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewPost from "./NewPost";
 import Post from "./Post";
 import * as styles from "./PostsList.module.css";
 import Modal from "./Modal";
+
+const url = "http://localhost:8080/posts";
 
 export default function PostList(props) {
   const [postsList, setPostsList] = useState([]);
 
   const addPostHandler = async (objArg) => {
     try {
-      const response = await fetch("http://localhost:8080/posts", {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,6 +28,23 @@ export default function PostList(props) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setPostsList(data.posts);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchPosts();
+  }, []);
 
   return (
     <>
