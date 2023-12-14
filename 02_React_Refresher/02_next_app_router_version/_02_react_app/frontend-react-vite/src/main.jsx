@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import NewPost from "./routes/NewPost";
 import RootLayout from "./routes/RootLayout";
 import Posts from "./routes/Posts";
+import { loader as fetchPostData } from "./routes/Posts";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Posts />,
+        loader: fetchPostData,
         children: [{ path: "create-post", element: <NewPost /> }],
       },
     ],
