@@ -17,19 +17,19 @@ app.use((req, res, next) => {
 });
 
 app.get("/posts", async (req, res) => {
-  await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
+  // await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
   const storedPosts = await getStoredPosts();
   res.json({ posts: storedPosts });
 });
 
 app.get("/posts/:id", async (req, res) => {
   const storedPosts = await getStoredPosts();
-  const post = storedPosts.find((post) => post.id === req.params.id);
+  const post = storedPosts.find((post) => post.id === parseInt(req.params.id));
   res.json({ post });
 });
 
 app.post("/posts", async (req, res) => {
-    await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
+  // await new Promise((resolve, reject) => setTimeout(() => resolve(), 3500));
   const existingPosts = await getStoredPosts();
   const newPost = {
     id: new Date().getTime(),

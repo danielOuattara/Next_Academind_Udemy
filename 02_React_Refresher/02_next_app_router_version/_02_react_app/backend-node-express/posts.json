@@ -1,1 +1,18 @@
-{"posts":[{"id":1702482161905,"author":"azerty","body":"elgdsoufdizf izf isfiz ir is izr sitrs"},{"id":1702482037305,"author":"daniel","body":"NextJS is awesome"},{"id":1702481329831,"author":"Boy","body":"new post again"},{"id":1702481309651,"author":"daniel","body":"new post"},{"id":1702479903609,"author":"Maximilian","body":"This course is hopefully very helpful to you!"}]}
+{
+  "posts": [
+    { "id": 1702547113447, "body": "wwwww", "author": "www" },
+    {
+      "id": 1702544281495,
+      "body": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzz",
+      "author": "zzzz"
+    },
+    { "id": 1702482037305, "author": "daniel", "body": "NextJS is awesome" },
+    { "id": 1702481329831, "author": "Boy", "body": "new post again" },
+    { "id": 1702481309651, "author": "daniel", "body": "new post" },
+    {
+      "id": 1702479903609,
+      "author": "Maximilian",
+      "body": "This course is hopefully very helpful to you!"
+    }
+  ]
+}
