@@ -2,31 +2,8 @@ import Post from "./Post";
 import styles from "./PostsList.module.css";
 import { useLoaderData } from "react-router-dom";
 
-export default function PostList(props) {
+export default function PostList() {
   const posts = useLoaderData();
-  // const addPostHandler = async (objArg) => {
-  //   try {
-  //     setIsPostingData(true);
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(objArg),
-  //     });
-
-  //     if (!response.ok) {
-  //       setIsPostingData(false);
-  //       throw new Error(`${response.status}: ${response.statusText}`);
-  //     }
-
-  //     setIsPostingData(false);
-  //     return setPostsList((prevState) => [...prevState, objArg]);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   return (
     <>
       {posts.length === 0 && (
