@@ -3,19 +3,26 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function PostItem(props) {
+  console.log("props ===> ", props);
   const formattedDate = new Date(props.date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const imagePath = `/images/posts/${props.slug}/${props.image}`;
+  const imagePath = `/images/posts/${props.postSlug}/${props.image}`;
 
   return (
     <li className={styles.post}>
-      <Link href={props.postSlug}>
+      <Link href={`/posts/${props.postSlug}`}>
         <div className={styles.image}>
-          <Image src={imagePath} alt={props.title} width={300} height={200} />
+          <Image
+            src={imagePath}
+            alt={props.title}
+            width={300}
+            height={200}
+            layout="responsive"
+          />
         </div>
 
         <div className={styles.content}>
