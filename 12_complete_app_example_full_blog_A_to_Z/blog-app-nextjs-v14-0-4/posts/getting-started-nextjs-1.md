@@ -2,7 +2,7 @@
 postSlug: getting-started-nextjs-1
 title: Getting started with NextJS
 image: getting-started-nextjs-1.png
-date: 2023-12-15
+date: "2022-12-16"
 excerpt: The React Framework for the Web. Used by some of the world's largest companies, Next.js enables you to create full-stack Web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.
 isFeatured: true
 ---
