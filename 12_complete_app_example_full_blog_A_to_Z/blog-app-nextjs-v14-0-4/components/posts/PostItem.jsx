@@ -13,7 +13,7 @@ export default function PostItem(props) {
 
   return (
     <li className={styles.post}>
-      <Link href={props.postSlug}>
+      <Link href={`/posts/${props.postSlug}`}>
         <div className={styles.image}>
           <Image
             src={imagePath}

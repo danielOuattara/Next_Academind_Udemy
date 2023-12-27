@@ -16,7 +16,7 @@ export default function PostContent() {
         title={POST.title}
         image={`/images/posts/${POST.postSlug}/${POST.image}`}
       />
-      CONTENT
+      {POST.content}
     </article>
   );
 }
