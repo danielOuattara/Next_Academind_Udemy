@@ -1,5 +1,6 @@
 import styles from "./PostContent.module.css";
 import PostHeader from "./PostHeader";
+import Markdown from "react-markdown";
 
 const POST = {
   postSlug: "getting-started-nextjs-1",
@@ -16,7 +17,7 @@ export default function PostContent() {
         title={POST.title}
         image={`/images/posts/${POST.postSlug}/${POST.image}`}
       />
-      {POST.content}
+      <Markdown>{POST.content}</Markdown>
     </article>
   );
 }
