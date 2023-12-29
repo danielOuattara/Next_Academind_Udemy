@@ -1,9 +1,17 @@
 import PostContent from "@/components/posts/post-details/PostContent";
 import { getAllPostsSlug, getSinglePostData } from "@/libraries/posts_utility";
-
+import Head from "next/head";
 //--------------------------------------------------------------
 export default function PostDetailsPage(props) {
-  return <PostContent postData={props.postData} />;
+  return (
+    <>
+      <Head>
+        <title>{props.postData.title} blog</title>
+        <meta name="description" content={props.postData.excerpt} />
+      </Head>
+      <PostContent postData={props.postData} />;
+    </>
+  );
 }
 
 //--------------------------------------------------------------

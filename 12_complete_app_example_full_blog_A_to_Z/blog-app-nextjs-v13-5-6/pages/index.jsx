@@ -1,4 +1,4 @@
-// import Head from "next/head";
+import Head from "next/head";
 // import Image from "next/image";
 // import { Inter } from "next/font/google";
 // import styles from "@/styles/Home.module.css";
@@ -13,6 +13,13 @@ import { getFeaturedPosts } from "@/libraries/posts_utility";
 export default function Home(props) {
   return (
     <>
+      <Head>
+        <title>Daniel's blog</title>
+        <meta
+          name="description"
+          content="My blog is about Web development technologies"
+        />
+      </Head>
       <Hero />
       <FeaturedPosts posts={props.featuredPosts} />
     </>
