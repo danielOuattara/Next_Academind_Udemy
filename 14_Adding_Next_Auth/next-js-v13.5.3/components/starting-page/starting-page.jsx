@@ -1,6 +1,6 @@
-import classes from './starting-page.module.css';
+import classes from "./starting-page.module.css";
 
-function StartingPageContent() {
+export default function StartingPageContent() {
   // Show Link to Login page if NOT auth
 
   return (
@@ -9,5 +9,3 @@ function StartingPageContent() {
     </section>
   );
 }
-
-export default StartingPageContent;
