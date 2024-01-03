@@ -1,8 +1,7 @@
 import UserProfile from "../components/profile/user-profile";
 import { getSession } from "next-auth/react";
 
-export default function ProfilePage(props) {
-  console.log(props);
+export default function ProfilePage() {
   return <UserProfile />;
 }
 
