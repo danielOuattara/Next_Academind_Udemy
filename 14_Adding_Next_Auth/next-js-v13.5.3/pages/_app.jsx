@@ -7,6 +7,7 @@ export default function MyApp({
   pageProps: { session, ...pageProps },
 }) {
   return (
+    /* Recommended for optimization */
     <SessionProvider session={session}>
       <Layout>
         <Component {...pageProps} />
