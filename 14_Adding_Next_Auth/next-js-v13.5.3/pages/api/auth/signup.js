@@ -18,7 +18,19 @@ export default async function handler(req, res) {
     try {
       const client = await connectToDatabase();
       const db = client.db();
+
+      const existingUser = await db
+        .collection("users")
+        .findOne({ email: req.body.email });
+
+      if (existingUser) {
+        client.close();
+        return res
+          .status(422)
+          .json({ message: "Email in use. Choose another email" });
+      }
       const hashedPwd = await hash(req.body.password, 13);
+
       await db
         .collection("users")
         .insertOne({ email: req.body.email, password: hashedPwd });
