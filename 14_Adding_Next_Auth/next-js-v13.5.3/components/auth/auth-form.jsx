@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import classes from "./auth-form.module.css";
 import { useRegister } from "./useRegister";
+import { signIn } from "next-auth/react";
 
 //-----------------------------------
 async function registerUser(payload) {
@@ -41,7 +42,17 @@ export default function AuthForm() {
     // client validation: TODO in production
 
     if (isLogin) {
-      // login logic
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      console.log("result = ", result);
+
+      if (!result.error) {
+        // set some auth state/logic
+      }
     } else {
       await registerUser({ email, password });
     }
