@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import classes from "./auth-form.module.css";
-import { useRegister } from "./useRegister";
 import { signIn } from "next-auth/react";
 
 //-----------------------------------
@@ -47,8 +46,6 @@ export default function AuthForm() {
         email,
         password,
       });
-
-      console.log("result = ", result);
 
       if (!result.error) {
         // set some auth state/logic

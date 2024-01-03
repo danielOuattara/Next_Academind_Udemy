@@ -14,7 +14,6 @@ export const authOptions = {
       name: "Credentials",
       async authorize(credentials, req) {
         const client = await connectToDatabase();
-
         const user = await client
           .db()
           .collection("users")

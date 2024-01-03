@@ -3,7 +3,7 @@ import classes from "./main-navigation.module.css";
 import { useSession, signOut } from "next-auth/react";
 
 function MainNavigation() {
-  console.log(useSession());
+  // console.log(useSession());
   const { data: session, status } = useSession();
   return (
     <header className={classes.header}>
