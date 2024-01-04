@@ -64,11 +64,30 @@
 import ProfileForm from "./profile-form";
 import styles from "./user-profile.module.css";
 
+async function handleChangePassword(payload) {
+  try {
+    const response = await fetch("/api/user/change-password", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `${response.status}: ${response.statusText}` || "Something went wrong",
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function UserProfile() {
   return (
     <section className={styles.profile}>
       <h1>Your User Profile</h1>
-      <ProfileForm />
+      <ProfileForm handleChangePassword={handleChangePassword} />
     </section>
   );
 }

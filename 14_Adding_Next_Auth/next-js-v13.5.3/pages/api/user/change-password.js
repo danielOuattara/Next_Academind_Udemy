@@ -1,18 +1,21 @@
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../auth/[...nextauth]";
 import { connectToDatabase } from "../../../libraries/db_lib";
 import { compare, hash } from "bcryptjs";
+
+// const secret = process.env.NEXTAUTH_SECRET;
 
 export default async function handler(req, res) {
   if (req.method !== "PATCH") return;
 
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
   if (!session) return res.status(401).json({ message: "Not Authorized !" });
 
   if (
     !req.body.oldPassword ||
     req.body.oldPassword.trim().length < 3 ||
-    !req.body.password ||
-    req.body.password.trim().length < 3
+    !req.body.newPassword ||
+    req.body.newPassword.trim().length < 3
   ) {
     return res.status(422).json({ message: "Invalid email or password" });
   }
@@ -45,7 +48,6 @@ export default async function handler(req, res) {
     );
 
   console.log("result = ", result);
-
   client.close();
   return res.status(201).json({ message: "Password updated successfully" });
 }

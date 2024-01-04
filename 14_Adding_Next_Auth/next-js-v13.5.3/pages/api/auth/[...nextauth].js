@@ -5,14 +5,15 @@ import { compare } from "bcryptjs";
 
 export const authOptions = {
   session: {
-    // strategy: "jwt",
-    jwt: true,
+    strategy: "jwt",
+    // jwt: true,
   },
 
   providers: [
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
+        console.log("Received credentials: ", credentials);
         const client = await connectToDatabase();
         const user = await client
           .db()
