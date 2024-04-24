@@ -1,19 +1,19 @@
 import Link from "next/link";
+import { NEWS } from "@/components/news";
 
 export default function NewsPage() {
   return (
     <main>
       <h1>News Page</h1>
-      <ul>
-        <li>
-          <Link href="/news/sports">First News Item</Link>
-        </li>
-        <li>
-          <Link href="/news/culture">Second News Item</Link>
-        </li>
-        <li>
-          <Link href="/news/education">Third News Item</Link>
-        </li>
+      <ul className="news-list">
+        {NEWS.map((news) => (
+          <li key={news.id}>
+            <Link href={`/news/${news.slug}`}>
+              <img src={`/images/news/${news.image}`} alt={news.title} />
+              <span>{news.title}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </main>
   );
